@@ -17,7 +17,6 @@
 package io.sweers.catchup.data
 
 import android.content.Context
-import android.support.v4.util.ArrayMap
 import io.sweers.catchup.P
 import io.sweers.catchup.data.designernews.DesignerNewsService
 import io.sweers.catchup.data.dribbble.DribbbleService
@@ -66,29 +65,31 @@ class MockDataInterceptor(@ApplicationContext private val context: Context) : In
   companion object {
 
     // TODO Generate this?
-    private val SUPPORTED_ENDPOINTS = object : ArrayMap<String, ServiceData>() {
-      init {
-        put(RedditService.HOST,
-            ServiceData.Builder("r").addEndpoint("/")
-                .build())
-        put(MediumService.HOST,
-            ServiceData.Builder("m").addEndpoint("/browse/top")
-                .build())
-        put(ProductHuntService.HOST,
-            ServiceData.Builder("ph").addEndpoint("/v1/posts")
-                .build())
-        put(SlashdotService.HOST,
-            ServiceData.Builder("sd").addEndpoint("/Slashdot/slashdotMainatom")
-                .fileType("xml")
-                .build())
-        put(DesignerNewsService.HOST,
-            ServiceData.Builder("dn").addEndpoint("/api/v1/stories")
-                .build())
-        put(DribbbleService.HOST,
-            ServiceData.Builder("dr").addEndpoint("/v1/shots")
-                .build())
-      }
-    }
+//    private val SUPPORTED_ENDPOINTS = object : ArrayMap<String, ServiceData>() {
+//      init {
+//        put(RedditService.HOST,
+//            ServiceData.Builder("r").addEndpoint("/")
+//                .build())
+//        put(MediumService.HOST,
+//            ServiceData.Builder("m").addEndpoint("/browse/top")
+//                .build())
+//        put(ProductHuntService.HOST,
+//            ServiceData.Builder("ph").addEndpoint("/v1/posts")
+//                .build())
+//        put(SlashdotService.HOST,
+//            ServiceData.Builder("sd").addEndpoint("/Slashdot/slashdotMainatom")
+//                .fileType("xml")
+//                .build())
+//        put(DesignerNewsService.HOST,
+//            ServiceData.Builder("dn").addEndpoint("/api/v1/stories")
+//                .build())
+//        put(DribbbleService.HOST,
+//            ServiceData.Builder("dr").addEndpoint("/v1/shots")
+//                .build())
+//      }
+//    }
+
+      private val SUPPORTED_ENDPOINTS = mapOf<String, ServiceData>()
 
     private fun formatUrl(service: ServiceData, url: HttpUrl): String {
       var lastSegment = url.pathSegments()[url.pathSize() - 1]

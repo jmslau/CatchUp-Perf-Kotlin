@@ -20,16 +20,16 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 import java.util.TreeMap
 
-private val SUFFIXES = object : TreeMap<Long, String>() {
-  init {
-    put(1_000L, "k")
-    put(1_000_000L, "M")
-    put(1_000_000_000L, "G")
-    put(1_000_000_000_000L, "T")
-    put(1_000_000_000_000_000L, "P")
-    put(1_000_000_000_000_000_000L, "E")
-  }
-}
+//private val SUFFIXES = object : TreeMap<Long, String>() {
+//  init {
+//    put(1_000L, "k")
+//    put(1_000_000L, "M")
+//    put(1_000_000_000L, "G")
+//    put(1_000_000_000_000L, "T")
+//    put(1_000_000_000_000_000L, "P")
+//    put(1_000_000_000_000_000_000L, "E")
+//  }
+//}
 
 fun Long.format(): String {
   var shortened = shorten()
@@ -52,11 +52,11 @@ fun Long.shorten(): String {
     return java.lang.Long.toString(this) //deal with easy case
   }
 
-  val e = SUFFIXES.floorEntry(this)
-  val divideBy = e.key
-  val suffix = e.value
+//  val e = SUFFIXES.floorEntry(this)
+  val divideBy = 1000L
+//  val suffix = e.value
 
   val truncated = this / (divideBy!! / 10) //the number part of the output times 10
   val hasDecimal = truncated < 100 && truncated / 10.0 != (truncated / 10).toDouble()
-  return if (hasDecimal) (truncated / 10.0).toString() + suffix else (truncated / 10).toString() + suffix
+  return if (hasDecimal) (truncated / 10.0).toString() /*+ suffix*/ else (truncated / 10).toString() /*+ suffix*/
 }

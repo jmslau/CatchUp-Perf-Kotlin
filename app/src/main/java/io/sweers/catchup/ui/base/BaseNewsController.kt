@@ -409,7 +409,7 @@ abstract class BaseNewsController<T : HasStableId> : ServiceController,
         score.visibility = VISIBLE
         score.text = String.format("%s %s",
             scoreValue.first,
-            scoreValue.second.toLong().format())
+            scoreValue.second?.toLong()?.format())
       }
     }
 
