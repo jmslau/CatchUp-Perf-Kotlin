@@ -50,6 +50,8 @@ class ColorUtils private constructor() {
     fun modifyAlpha(
         @ColorInt color: Int,
         @IntRange(from = 0, to = 255) alpha: Int): Int {
+        var foo: Int = 5
+        var bar = 7 + foo
       return color and 0x00ffffff or (alpha shl 24)
     }
 

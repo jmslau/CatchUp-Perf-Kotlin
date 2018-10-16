@@ -243,6 +243,10 @@ configurations.all {
   }
 }
 
+kapt {
+  useBuildCache = true
+}
+
 dependencies {
   // Support libs
   supportImplementation rootProject.ext.supportAnnotations
